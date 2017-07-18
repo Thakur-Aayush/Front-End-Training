@@ -12,7 +12,7 @@
                 margin: auto;
                 border-radius: 20px;
                 background: royalblue;
-                text-align: center;
+                /* text-align: center; */
                 padding: 20px;
                 font-size: 30px;
                 color: yellow;
@@ -39,16 +39,18 @@
             });
 
             function loadAjax(){
-                $.ajax("./sample.txt",{success:setContent,
-                                        type:"get",
-                                        dataType:"text"});
+                // $.ajax("./sample.txt",{success:setContent,
+                //                         type:"get",
+                //                         dataType:"text"});
+                $.get("./sample.txt",function(data){
+                    $(".contentDiv").html(data);
+                })
             }
-            function setContent(data){
-                $(".contentDiv").text(data);
-            } 
+            // function setContent(data){
+            //     $(".contentDiv").text(data);
+            // } 
             function loadHTML(){
-                alert("load")
-                $("#contentDiv").load("./sample.html");
+                $(".contentDiv").load("./sample.html",function(res, status){ console.log("loaded")});
             }
         </script>
     </body>

@@ -1,7 +1,6 @@
 window.addEventListener("load",function(){
     emp = JSON.parse(localStorage.getItem("employee"));
     var result = document.querySelector(".wrapper");
-    console.log(emp);
     profilePage();
 })
 function profilePage(){
@@ -23,29 +22,23 @@ function profilePage(){
     exp();
 }
 document.getElementById("displayPI").addEventListener("click",function(){
-    document.getElementById("personalInfo").style.display = "block";
-    document.getElementById("academicInfo").style.display = "none";
-    document.getElementById("skillSet").style.display = "none";
-    document.getElementById("experience").style.display = "none";
+    hideSections("personalInfo","academicInfo","skillSet","experience");
 })
 document.getElementById("displayAD").addEventListener("click",function(){ 
-    document.getElementById("academicInfo").style.display = "block";
-    document.getElementById("personalInfo").style.display = "none";
-    document.getElementById("skillSet").style.display = "none";
-    document.getElementById("experience").style.display = "none";
+    hideSections("academicInfo","experience","skillSet","personalInfo");
 })
 document.getElementById("displaySkills").addEventListener("click",function(){
-    document.getElementById("skillSet").style.display = "block";
-    document.getElementById("academicInfo").style.display = "none";
-    document.getElementById("personalInfo").style.display = "none";
-    document.getElementById("experience").style.display = "none";
+    hideSections("skillSet","experience","academicInfo","personalInfo");
 })
 document.getElementById("displayExp").addEventListener("click",function(){
-    document.getElementById("experience").style.display = "block";
-    document.getElementById("academicInfo").style.display = "none";
-    document.getElementById("skillSet").style.display = "none";
-    document.getElementById("personalInfo").style.display = "none";
+    hideSections("experience","skillSet","academicInfo","personalInfo")
 })
+function hideSections(section1,section2,section3,section4){
+    document.getElementById(section1).style.display = "block";
+    document.getElementById(section2).style.display = "none";
+    document.getElementById(section3).style.display = "none";
+    document.getElementById(section4).style.display = "none";
+}
 function personalDetails(){
     var personalInfo = document.getElementById("personalInfo");
     var name = document.createElement("h1");
@@ -87,15 +80,12 @@ function academicDetails(){
     schooling(tbody,10,"SSC Institute","SSC University","SSC Percentage");
     schooling(tbody,12,"HSC Institute","HSC University","HSC Percentage");
     if(emp["diploma"] == "on"){
-        console.log("diploma");
         postSchooling(tbody,"Diploma","Diploma Institute","Diploma University","Diploma Percent");
     }
     if(emp["graduation"] == "on"){
-        console.log("graduation")
         postSchooling(tbody,"Degree","Graduation Institute","Graduation University","Graduation Percent");
     }
     if(emp["postGraduation"] == "on"){
-        console.log("pg")
         postSchooling(tbody,"PG","PostGraduation Institute","PostGraduation University","PostGraduation Percent");
     }
     table.appendChild(tbody);
@@ -134,6 +124,7 @@ function skills(){
 }
 function exp(){
     var experience = document.getElementById("experience");
+    var currentYear = (new Date()).getFullYear();
     var heading = document.createElement("h1");
     heading.innerHTML = "Exprience Details : ";
     experience.appendChild(heading);
@@ -142,7 +133,7 @@ function exp(){
         para.innerHTML = "Fresher";    
     }
     else{
-        para.innerHTML = emp["Experience"]+" years of Experience in "+emp["companyName"]+" from "+emp["yearOfJoining"];
+        para.innerHTML = emp["Experience"]+" years of Experience in "+emp["companyName"]+" from "+emp["yearOfJoining"]+" to "+currentYear+" . ";
     }
     experience.appendChild(para);
 }

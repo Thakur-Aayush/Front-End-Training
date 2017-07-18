@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Basic Filters</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+            body{
+                width: 90%;
+                margin: auto; 
+                position: relative;                
+            }
+            a{
+                position: absolute;
+                top: 5px;
+                right: 150px;
+                width: 100px;
+                height: 30px;
+                display: inline-block;
+                background: url("./images/google-200x200.7714256da16f.png") no-repeat 0px -37px / cover; 
+            }
+            .abc{
+                font: bold 20px Ubuntu;
+            }
+            .xyz{
+                font: italic 20px Ubuntu;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="https://google.com"></a>
+        <h1>Using Filters</h1>
+        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <p id="first">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <p class="a" id="second">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <p class="b">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <button type="button">Add Class</button>
+        <button type="button">Remove Class</button>  
+        <script>
+            // $("document").ready(function(){
+            //     // $("p").css("border","2px dashed #000000");
+            //     // $("p.a").css("border","2px solid red ");
+            //     // $("p#first").css("padding","30px")
+            //     // $("p.a#second").css("border","2px solid blue");
+            // })
+            // 2nd
+            // $(function(){
+            //     alert("Document Loaded for manipulation");
+            //     $(".a").css("border","3px dashed blue");
+            //     $(".a").css("padding","20px")
+            // })
+            // 3th
+            // $(function(){
+            //     $("a").click(function(event){
+            //         alert("Use of event.preventDefault() to stop default behaviours of tags and events.");
+            //         event.preventDefault();
+            //     })
+            // })
+            // 4th
+            $(function(){
+                $("button:last").hide();
+                $("button:first").click(function(){
+                    $("p:first").addClass("abc");
+                    $("#first").addClass("xyz");
+                    $(this).hide();
+                    $("button:last").show();
+                })
+                $("button:last").click(function(){
+                    $("p:first").removeClass("abc");
+                    $("#first").removeClass("xyz");
+                    $(this).hide();
+                    $("button:first").show();
+                })
+            })
+        </script>
+    </body>
+</html>

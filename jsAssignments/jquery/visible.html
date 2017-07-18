@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Visible and Hidden Pseudo Selectors</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+            .hidden , .visible{
+                display: none;
+                margin: 20px;
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                padding-top: 40px;
+                box-sizing: border-box;
+                border: 2px solid aqua;
+                border-radius: 50%;
+            }
+            .visible{
+                display: inline-block;
+                border: 2px solid maroon;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hidden">
+            Hidden
+        </div>
+        <div class="visible">
+            Visible
+        </div>
+        <div class="visible">
+            Visible
+        </div>
+        <div class="hidden">
+            Hidden
+            <!-- <p></p> -->
+        </div>
+        <!-- <p>This is Paragraph.</p> -->
+        <script>
+            $(function(){
+                $("div:visible").click(visibleDiv);
+            })
+            function visibleDiv(){
+                $("div:visible").css("border","2px solid green");
+                $("div:hidden").css("display","inline-block");
+                // console.log($("div").text());
+                // console.log($("div").text("It Works"));
+                // console.log($("div").html());
+                // console.log($("div").html("It Works"));
+                // $("div").eq(2).html("Third");
+                // $("div:visible:eq(1)").has("p").end().css("border","2px solid red");
+                // $("div:first").clone().appendTo("div");
+                // $("div.hidden").click(function(){
+                //     $("div").width(250);
+                //     $("div").height(200);
+                //     $("div").css("padding-top","100px");
+                // })
+            }
+        </script>
+    </body>
+</html>

@@ -75,6 +75,7 @@ img{
     font: italic 30px Ubuntu; 
     color: #fff;
     padding: 10px 0px;
+    cursor: pointer;
 }
 .linksPanel ul li:hover{
     font-size: 32px;

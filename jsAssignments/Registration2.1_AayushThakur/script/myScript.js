@@ -190,13 +190,11 @@ function yearValidation(){
     var currentDate = new Date();
     currentDate = currentDate.getFullYear();
     year = currentDate - year.getFullYear();
-    console.log(year);
     if(year > (age-18) || age < year || isNaN(year)){
         if(age < year){
             errorArea.innerHTML = "Entered value is greater than your Age.";
         }
         if(isNaN(year)){
-            console.log(year)
             errorArea.innerHTML = "Year is not Valid.";
         }
         if(year > (age-18)){
